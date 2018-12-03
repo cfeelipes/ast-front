@@ -11,6 +11,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AnimaisPageComponent } from './pages/animais-page/animais-page.component';
 import { VoluntariosPageComponent } from './pages/voluntarios-page/voluntarios-page.component';
 import { RelatoriosPageComponent } from './pages/relatorios-page/relatorios-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   { path: 'animais-page', component: AnimaisPageComponent },
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [],
