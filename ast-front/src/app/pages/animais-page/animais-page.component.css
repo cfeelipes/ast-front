@@ -1,3 +1,15 @@
 table {
     width: 100%;
 }
+
+.hiddenId {
+    display: none !important;
+}
+
+.firstColumn {
+    padding-left: 20px;
+}
+
+.cursorPointer {
+    cursor: pointer;
+}

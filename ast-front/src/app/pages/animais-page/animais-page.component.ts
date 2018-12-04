@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AnimalService } from '../../services/animal-service/animal.service';
 import { Animal } from 'src/app/models/animal';
+import { DataSource } from '@angular/cdk/collections';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-animais-page',
@@ -9,21 +11,34 @@ import { Animal } from 'src/app/models/animal';
 })
 export class AnimaisPageComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'nome', 'tipo', 'sexo', 'idade'];
-  animalService: AnimalService;
-  animais: Animal[];
-  teste: any;
+  dataSource = new AnimalDataSource(this.animalService);
+  displayedColumns = ['id', 'nome', 'tipo', 'idade', 'sexo', 'acoes'];
 
-  constructor(animalService: AnimalService) {
-    this.animalService = animalService;
-  }
+  constructor(private animalService: AnimalService) { }
 
   ngOnInit() {
-    this.preencheTabela();
+
   }
 
-  preencheTabela() {
-    this.teste = this.animalService.listarAnimais().subscribe(animais => this.animais = animais);
-    console.log(this.teste);
+  editarAnimal() {
+
   }
+
+  deletarAnimal(animal) {
+    this.animalService.deletarAnimal(animal.id)
+      .subscribe(
+        res => alert('Animal deletado com sucesso'),
+        error => console.log(error)
+      );
+  }
+}
+
+export class AnimalDataSource extends DataSource<any> {
+  constructor(private animalService: AnimalService) {
+    super();
+  }
+  connect(): Observable<Animal[]> {
+    return this.animalService.listarAnimais();
+  }
+  disconnect() {}
 }

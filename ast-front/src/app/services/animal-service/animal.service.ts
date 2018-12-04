@@ -16,8 +16,8 @@ export class AnimalService {
     return this.http.get<Animal[]>(this.APIEndpoint);
   }
 
-  recuperarAnimal(id: string) {
-    return this.http.get<Animal[]>(this.APIEndpoint + id);
+  recuperarAnimal(id: string): Observable<Animal> {
+    return this.http.get<Animal>(this.APIEndpoint + id);
   }
 
   criarAnimal(animal: Animal) {
@@ -29,6 +29,6 @@ export class AnimalService {
   }
 
   deletarAnimal(id: string) {
-    return this.http.delete<Animal[]>(this.APIEndpoint + id);
+    return this.http.delete(this.APIEndpoint + id);
   }
 }
