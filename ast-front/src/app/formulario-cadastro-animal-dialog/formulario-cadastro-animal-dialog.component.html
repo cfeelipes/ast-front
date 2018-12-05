@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Novo animal</h1>
+<div mat-dialog-content>
+  <p>Insira os dados do animal que deseja adicionar:</p>
+  <mat-form-field fxFlexFill>
+    <input matInput [placeholder]="condition ? data.nome : 'Nome'" [(ngModel)]="data.nome">
+  </mat-form-field>
+  <mat-form-field fxFlexFill>
+    <input matInput [placeholder]="condition ? data.tipo : 'Tipo'" [(ngModel)]="data.tipo">
+  </mat-form-field>
+  <mat-form-field fxFlexFill>
+    <input type="number" matInput [placeholder]="condition ? data.idade : 'Idade'" [(ngModel)]="data.idade">
+  </mat-form-field>
+  <mat-form-field fxFlexFill>
+    <input matInput [placeholder]="condition ? data.sexo : 'Sexo'" [(ngModel)]="data.sexo">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Salvar</button>
+</div>

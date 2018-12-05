@@ -13,3 +13,7 @@ table {
 .cursorPointer {
     cursor: pointer;
 }
+
+.btn-adicionar {
+    margin: 20px;
+}

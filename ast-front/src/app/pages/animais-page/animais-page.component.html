@@ -29,14 +29,20 @@
     <td mat-cell *matCellDef="let animal"> {{animal.sexo}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="acoes" fxFlexAlign="end">
-    <th mat-header-cell *matHeaderCellDef fxFlexAlign="end"> Ações </th>
-    <td mat-cell *matCellDef="let animal" fxFlexAlign="end">
+  <ng-container matColumnDef="acoes">
+    <th mat-header-cell *matHeaderCellDef> Ações </th>
+    <td mat-cell *matCellDef="let animal">
       <i class="material-icons cursorPointer" (click)="editarAnimal(animal)">edit</i>
-      <i class="material-icons cursorPointer" (click)="deletarAnimal(animal)">delete</i>
+      <i class="material-icons cursorPointer" (click)="dialogConfirmacaoDeletarAnimal(animal)">delete</i>
     </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<div fxLayout="column" fxLayoutAlign="end end">
+  <button class="btn-adicionar" mat-fab color="primary" (click)="adicionarAnimal()">
+    <i class="material-icons">add</i>
+  </button>
+</div>
